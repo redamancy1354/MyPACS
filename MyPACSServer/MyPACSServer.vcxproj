@@ -142,14 +142,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="testServer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyPACSDB.cpp" />
     <ClCompile Include="MyPACSServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyPACSDB.h" />
     <ClInclude Include="MyPACSServer.h" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="XMLFile.xml" />
+    <Xml Include="config.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="create.sql" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

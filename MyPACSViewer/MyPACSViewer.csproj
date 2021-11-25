@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
     <None Remove="Resources\direction-adjustment.svg" />
     <None Remove="Resources\flip-horizontal.png" />
     <None Remove="Resources\flip-vertical.png" />
+    <None Remove="Resources\focus.png" />
     <None Remove="Resources\grid-four.svg" />
     <None Remove="Resources\icon.ico" />
     <None Remove="Resources\instance.png" />
@@ -31,21 +33,26 @@
     <None Remove="Resources\rotation-vertical.svg" />
     <None Remove="Resources\series.png" />
     <None Remove="Resources\study.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="fo-dicom" Version="5.0.1" />
+    <None Remove="Resources\window-merge.png" />
+    <None Remove="Resources\window-split.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\flip-horizontal.png" />
     <Resource Include="Resources\flip-vertical.png" />
+    <Resource Include="Resources\focus.png" />
     <Resource Include="Resources\icon.ico" />
     <Resource Include="Resources\instance.png" />
     <Resource Include="Resources\patient.png" />
     <Resource Include="Resources\revert.png" />
     <Resource Include="Resources\series.png" />
     <Resource Include="Resources\study.png" />
+    <Resource Include="Resources\window-merge.png" />
+    <Resource Include="Resources\window-split.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="fo-dicom.Desktop" Version="4.0.8" />
   </ItemGroup>
 
 </Project>
