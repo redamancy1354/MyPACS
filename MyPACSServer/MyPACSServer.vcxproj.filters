@@ -28,7 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="config.xml">
+    <Xml Include="XMLFile.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

@@ -79,8 +79,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\boost_1_77_0\boost_1_77_0;D:\dcmtk\include;D:\dcmtk\dcmtk-3.6.6-win64-support-MD-iconv-msvc-15.8\zlib-1.2.11\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\boost_1_77_0\boost_1_77_0\stage\lib;D:\dcmtk\dcmtk-3.6.6-win64-support-MD-iconv-msvc-15.8\zlib-1.2.11\lib;D:\dcmtk\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\boost_1_77_0\boost_1_77_0;C:\Program Files (x86)\DCMTK\include;D:\DCMTK_3.6.6\dcmtk-3.6.6-win64-support-MD-iconv-msvc-15.8\zlib-1.2.11\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\boost_1_77_0\boost_1_77_0\stage\lib;C:\Program Files (x86)\DCMTK\lib;D:\DCMTK_3.6.6\dcmtk-3.6.6-win64-support-MD-iconv-msvc-15.8\zlib-1.2.11\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
