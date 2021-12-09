@@ -8,8 +8,6 @@
 - Python后端
   - Python 3.9
   - [requirements.txt](./MyPACSServer/requirements.txt)
-- 图像处理
-  - PyTorch
 - Database
   - MySQL 8.0
 
@@ -27,12 +25,12 @@
 
 ### Structure
 
-![MyPACS.drawio](./images/MyPACS.png)
+![MyPACS.drawio](images/MyPACS.png)
 
 - [StudySCU](./studySCU)：一个DICOM C-STORE SCU，用于模拟产生图像的检查设备端。
 - [MyPACSViewer](./MyPACSViewer)：一个集成了ViewerSCU（一个DICOM Q-R SCU）的前端UI界面，模拟的是客户端。
-- [MyPACSServer](./MyPACSServer)：一个DICOM Q-R/C-STORE SCP，并连接了一个本地用于存储DICOM数据索引信息和文件路径的MySQL数据库和一个DICOM图像处理模块，模拟一个DICOM服务器工作站。
-- [图像处理模块](./MyPACSServer/processing)
+- [MyPACSServer](./MyPACSServer)：一个DICOM Q-R/C-STORE SCP，并连接了一个本地用于存储DICOM数据索引信息和文件路径的MySQL数据库和一个Detection模块，模拟一个DICOM服务器工作站。在本次课程设计中，Database和Detection部分部署在远端服务器上，使用ssh连接。
+- [Detection](./MyPACSServer/detection)：一个使用LIDC-IDRI数据集的肺结节检测模块。
 
 ### Workflow
 
@@ -56,11 +54,11 @@
 
 - DICOM协议使用fo-dicom库。
 
-  ![image-20211119112618344](./images/ui.png)
+  ![image-20211119112618344](images/ui.png)
 
 - 使用MVVM设计模式（Model-View-ViewModel）
 
-  <img src="./images/mvvm.png" alt="img" style="zoom: 150%;" />
+  <img src="images/mvvm.png" alt="img" style="zoom: 150%;" />
 
 ### [MyPACSServer](./MyPACSServer)
 
@@ -71,7 +69,7 @@
 
 
 
-### [图像处理模块](./MyPACSServer/processing)
+### [Detection](./MyPACSServer/detection)
 
-
+- 使用LIDC-IDRI数据集进行肺结节检测
 

@@ -1,0 +1,94 @@
+﻿<Window x:Class="MyPACSViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPACSViewer"
+        xmlns:view="clr-namespace:MyPACSViewer.View"
+        xmlns:vm="clr-namespace:MyPACSViewer.ViewModel"
+        xmlns:model="clr-namespace:MyPACSViewer.Model"
+        mc:Ignorable="d"
+        Title="MyPACSViewer" Icon="/icon.ico" Height="720" Width="1280">
+    <Window.Resources>
+        <vm:OpenFileViewModel x:Key="OpenFileVM"/>
+        <vm:OpenFolderViewModel x:Key="OpenFolderVM"/>
+        <vm:OpenQRViewModel x:Key="OpenQRVM"/>
+        <vm:FileExplorerViewModel x:Key="FileExplorerVM"/>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" FontSize="14" Padding="5">
+                <MenuItem Header="File" >
+                    <MenuItem Header="Open File" DataContext="{StaticResource OpenFileVM}"  Command="{Binding OpenFileCommand}"/>
+                    <MenuItem Header="Open Folder" DataContext="{StaticResource OpenFolderVM}" Command="{Binding OpenFolderCommand}" />
+                    <MenuItem Header="Query/Retrive" DataContext="{StaticResource OpenQRVM}" Command ="{Binding OpenQRWindowCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="Export"/>
+                    <MenuItem Header="Exit"/>
+                </MenuItem>
+
+                <MenuItem Header="Image">
+                    <MenuItem Header="Reset Center"/>
+                    <MenuItem Header="Zoom"/>
+                    <MenuItem Header="Flip Horizontal"/>
+                    <MenuItem Header="Flip Vertical"/>
+                    <Separator/>
+                    <MenuItem Header="Invert Color"/>
+                    <MenuItem Header="Window Level"/>
+                    <Separator/>
+                    <MenuItem Header="Revert All"/>
+                </MenuItem>
+            </Menu>
+
+            <ToolBar  DockPanel.Dock="Top">
+                <view:ToolbarButton DataContext="{StaticResource OpenFileVM}" Command="{Binding OpenFileCommand}"
+                                    Source="{Binding Source}" Text="{Binding Text}"/>
+                <Separator/>
+                <view:ToolbarButton DataContext="{StaticResource OpenFolderVM}" Command="{Binding OpenFolderCommand}"
+                                    Source="{Binding Source}" Text="{Binding Text}"/>
+                <Separator/>
+                <view:ToolbarButton DataContext="{StaticResource OpenQRVM}" Command="{Binding OpenQRWindowCommand}"
+                                    Source="{Binding Source}" Text="{Binding Text}"/>
+
+            </ToolBar>
+
+            <StatusBar x:Name="StatusBar" DockPanel.Dock="Bottom" Height="24">
+                <StatusBarItem >
+                    <TextBlock x:Name="StatusBarText"/>
+                </StatusBarItem>
+            </StatusBar>
+
+            <DockPanel>
+                <ScrollViewer DockPanel.Dock="Left" MinWidth="300">
+                    <TreeView x:Name="treeView" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,-10,0,0"
+                            DataContext="{StaticResource FileExplorerVM}" ItemsSource="{Binding FileTreeDataList}" BorderThickness="0" >
+                        <TreeView.ItemContainerStyle>
+                            <Style TargetType="{x:Type TreeViewItem}">
+                                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                                <Setter Property="FontWeight" Value="Normal" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TreeView.ItemContainerStyle>
+
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <TextBlock x:Name="treeViewItemTB" Text="{Binding itemName}" Tag="{Binding itemId}"/>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </ScrollViewer>
+
+                <Grid>
+                    <view:Viewer2D x:Name="Viewer2D"/>
+                </Grid>
+            </DockPanel>
+
+        </DockPanel>
+
+    </Grid>
+</Window>
